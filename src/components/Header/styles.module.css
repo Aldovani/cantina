@@ -1,0 +1,17 @@
+.header {
+  padding: 36px;
+  border-bottom: 1px solid #CED4DA;
+
+}
+.container{
+  margin: 0 auto;
+  max-width: 1312px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.container img +img{
+  margin-left: 80px;
+}
