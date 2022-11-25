@@ -1,0 +1,29 @@
+.badge {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* Gray/Gray 0 */
+
+  color: #f8f9fa;
+  padding: 8px 16px;
+}
+
+.success {
+  background: #2b8a3e;
+}
+
+.cancel {
+  background: #c92a2a;
+}
+
+.waiting {
+  background: #e67700;
+}

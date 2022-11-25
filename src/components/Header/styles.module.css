@@ -1,17 +1,22 @@
 .header {
-  padding: 36px;
-  border-bottom: 1px solid #CED4DA;
-
+  padding: 36px 0;
+  border-bottom: 1px solid #ced4da;
+  position: fixed;
+  background: #F1F3F5;
+  width: 100%;
+  top: 0;
+  z-index: 3;
+  left: 0;
 }
-.container{
+.container {
   margin: 0 auto;
-  max-width: 1312px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 0 10%;
 
+  justify-content: space-between;
 }
 
-.container img +img{
+.container img + img {
   margin-left: 80px;
 }

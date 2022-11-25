@@ -1,0 +1,164 @@
+.payment {
+  padding: 120px 0 200px 10%;
+  width: 100%;
+  
+}
+.back {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 32px;
+
+  /* Gray/Gray 6 */
+
+  color: #868e96;
+}
+.title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+
+  color: #000000;
+  margin-top: 40px;
+}
+
+.containerPaymentMethod {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0 40px;
+}
+
+.radio {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 8px 16px;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.radio.selected {
+  background: rgba(240, 62, 62, 0.1);
+  border: 1px solid rgba(240, 62, 62, 0.1);
+  color: red;
+}
+.radio.selected svg path {
+  stroke: red;
+}
+.radio input {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.form {
+  border-top: 1px solid #868E96;
+  padding-top: 64px;
+  width: max-content;
+  display: grid;
+  grid-template-areas:
+    "n c"
+    "v s"
+    "b b";
+  grid-template-columns: repeat(2, 360px);
+  gap: 64px 120px;
+}
+
+.form h4 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+
+  color: #000000;
+  margin-bottom: 8px;
+}
+.form span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #adb5bd;
+}
+
+.form .divider {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+
+  color: #000000;
+}
+.icon{
+  position: relative;
+}
+.iconInput{
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-25%);
+}
+.form input {
+  width: 100%;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+
+  color: #868e96;
+  border: 1px solid #868e96;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+
+  background: transparent;
+}
+.form input.center {
+  text-align: center;
+}
+
+.form button {
+  grid-area: b;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: uppercase;
+  padding: 16px 0px;
+  gap: 8px;
+
+  background: #fa5252;
+  border-radius: 8px;
+  border: 0;
+  /* Red/Red 0 */
+
+  color: #fff5f5;
+}
+
+.dateValidation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+}

@@ -1,0 +1,54 @@
+.itemProduct {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #adb5bd;
+  max-width: 464px;
+}
+
+.itemProduct h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+
+
+  color: #c92a2a;
+}
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.counter button {
+  background: transparent;
+  border: 0;
+  font-size: 2rem;
+}
+.counter span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+
+  color: #c92a2a;
+}
+
+.containerImage {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 0 66px;
+}
+
+.image {
+  width: 65px;
+  height: auto;
+  background: rgba(250, 82, 82, 0.1);
+  padding: 6px;
+  border-radius: 6px;
+}

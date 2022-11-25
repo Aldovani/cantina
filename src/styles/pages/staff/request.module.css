@@ -1,0 +1,67 @@
+.container {
+  padding: 220px 10% 0;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 96px;
+}
+.header h1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 75px;
+
+  color: #000000;
+}
+.header input {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  padding: 16px;
+
+  max-width: 608px;
+  width: 608px;
+  border: 1px solid #868e96;
+  border-radius: 8px;
+
+  color: #868e96;
+}
+.header > div {
+  display: flex;
+  gap: 16px;
+}
+.header button {
+  background: #fa5252;
+  border-radius: 8px;
+  padding: 16px;
+  border: 0;
+  cursor: pointer;
+}
+.containerRequestItems {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.containerEmptyList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 120px;
+}
+.containerEmptyList span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  text-transform: capitalize;
+  color: #868e96;
+}

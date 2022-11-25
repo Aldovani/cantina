@@ -1,0 +1,54 @@
+.cardFood {
+  background: #f1f3f5;
+  box-shadow: 0px 123px 74px rgba(32, 39, 46, 0.02),
+    0px 55px 55px rgba(32, 39, 46, 0.03), 0px 14px 30px rgba(32, 39, 46, 0.03),
+    0px 0px 0px rgba(32, 39, 46, 0.03);
+  border-radius: 8px;
+  max-width: 315px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.cardFood img{
+  margin: 0 auto;
+}
+.name {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 40px;
+
+  /* Gray/Gray 7 */
+
+  color: #495057;
+}
+.description {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  /* or 21px */
+  max-width: 251px;
+  margin-top: 16px;
+
+  /* Gray/Gray 6 */
+
+  color: #868e96;
+}
+.price{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 28px;
+
+/* Gray/Gray 9 */
+
+color: #212529;
+margin-top: 32px;
+}
