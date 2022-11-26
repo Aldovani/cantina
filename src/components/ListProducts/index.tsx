@@ -9,14 +9,10 @@ import { Produto } from "../../Entidades/Produto";
 import Cookies from "js-cookie";
 type ListProducts = {
   buttonVisible?: boolean;
+  pedido: Pedido;
 };
 
-export function ListProducts({
-  buttonVisible = true,
-}: {
-  buttonVisible?: boolean;
-}) {
-  const pedido: Pedido = JSON.parse(Cookies.get("pedido") || "{}");
+export function ListProducts({ buttonVisible = true, pedido }: ListProducts) {
   const produtos: ProdutoPedido[] = pedido.ProdutosPedidos || [];
 
   return (

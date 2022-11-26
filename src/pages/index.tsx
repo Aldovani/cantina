@@ -32,7 +32,7 @@ function Home({ produtos }: { produtos: Produto[] }) {
     if (!Cookies.get("token")) {
       router.push("/login");
     }
-  }, []);
+  }, [router]);
 
   const adicionar = (produto: Produto) => {
     const pAtualizado = new Pedido();
@@ -46,7 +46,7 @@ function Home({ produtos }: { produtos: Produto[] }) {
     if (pp) {
       pp.Quantidade++;
     } else {
-      const novoPP = new ProdutoPedido();
+      const novoPP = new ProdutoPedido(0, produto);
       novoPP.Produto = produto;
       novoPP.Quantidade = 1;
       pAtualizado.ProdutosPedidos?.push(novoPP);
