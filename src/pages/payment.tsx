@@ -111,7 +111,7 @@ export default function Payment() {
               <h4>Numero do cartão</h4>
               <span>Digite os 14-16 numero do cartão</span>
               <div className={Styles.icon}>
-                <Image src={CardInput}  className={Styles.iconInput} alt="" />
+                <Image src={CardInput} className={Styles.iconInput} alt="" />
                 <input
                   type="number"
                   id="card"

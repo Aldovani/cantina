@@ -9,19 +9,19 @@ import { Produto } from "../../Entidades/Produto";
 import Cookies from "js-cookie";
 type ListProducts = {
   buttonVisible?: boolean;
-  pedido: Pedido;
+  pedido?: Pedido;
 };
 
 export function ListProducts({ buttonVisible = true, pedido }: ListProducts) {
-  const produtos: ProdutoPedido[] = pedido.ProdutosPedidos || [];
+  const produtos: ProdutoPedido[] = pedido?.ProdutosPedidos || [];
 
   return (
     <div className={Styles.listProducts}>
       <h2>Seu pedido</h2>
 
       <div className={Styles.containerItems}>
-        {pedido.ProdutosPedidos ? (
-          pedido.ProdutosPedidos.map((pp: ProdutoPedido) => (
+        {pedido?.ProdutosPedidos ? (
+          pedido?.ProdutosPedidos.map((pp: ProdutoPedido) => (
             <ItemProduct key={pp.Produto.Id} produto={pp} />
           ))
         ) : (
@@ -34,7 +34,9 @@ export function ListProducts({ buttonVisible = true, pedido }: ListProducts) {
       </div>
       <span className={Styles.price}>
         Total: R$
-        {pedido.Valor != undefined ? pedido.Valor.toFixed(2) : (0.0).toFixed(2)}
+        {pedido?.Valor != undefined
+          ? pedido?.Valor.toFixed(2)
+          : (0.0).toFixed(2)}
         <span></span>
       </span>
       {buttonVisible && (
