@@ -3,9 +3,28 @@ import { Header } from "../../../components/Header";
 import Styles from "../../../styles/pages/user/request.module.css";
 import EmptyList from "../../../assets/empty-list.svg";
 import { Badge } from "../../../components/Badge";
-import Link from 'next/link'
+import Link from "next/link";
+import Cookies from "js-cookie";
+import { Pedido } from "../../../Entidades/Pedido";
 
-export default function Index() {
+export async function getServerSideProps() {
+  const token = Cookies.get("token");
+  const response = await fetch("https://sandrapi.azurewebsites.net/pedidos/", {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  const requests = await response.json();
+
+  return {
+    props: {
+      requests,
+    },
+  };
+}
+
+export default function Index({ requests }: { requests: Pedido[] }) {
   return (
     <div className={Styles.container}>
       <Header />
@@ -13,12 +32,30 @@ export default function Index() {
       <h1>Histórico</h1>
 
       <div className={Styles.containerRequests}>
-        <Link href="/user/requests/1" className={Styles.requestItem}>
-          <h2>#999999999 </h2>
-          <h3>R$ 150.00</h3>
-          <Badge  type="success"/>
-        </Link>
-       
+        {requests.length > 0 ? (
+          requests.map((request: Pedido) => (
+            <Link
+              key={request.Id}
+              href={`/user/requests/${request.Id}`}
+              className={Styles.requestItem}
+            >
+              <h2># {request.Id} </h2>
+              <h3>R$ {request.Valor}</h3>
+              {request.Status === "Entregue" ? (
+                <Badge type="success" />
+              ) : request.Status === "Cancelado" ? (
+                <Badge type="cancel" />
+              ) : (
+                <Badge type="waiting" />
+              )}
+            </Link>
+          ))
+        ) : (
+          <div className={Styles.emptyList}>
+            <Image src={EmptyList} alt="Lista vazia" />
+            <h2>Nenhum pedido encontrado</h2>
+          </div>
+        )}
       </div>
 
       {/* 
