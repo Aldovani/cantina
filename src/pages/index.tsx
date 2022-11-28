@@ -29,7 +29,7 @@ function Home({ produtos }: { produtos: Produto[] }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!Cookies.get("token")) {
+    if (!Cookies.get("Token")) {
       router.push("/login");
     }
   }, [router]);

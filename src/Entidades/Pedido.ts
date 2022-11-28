@@ -8,11 +8,12 @@ export class Pedido {
   public Data?: Date;
   public MetPag?: string;
   public ClienteId?: number;
-  public Cliente?: Cliente;
-  public ProdutosPedidos: ProdutoPedido[];
+  public Clientes?: Cliente;
+  public Status?: string | null;
+  public ProdutosPedidos: Array<ProdutoPedido>;
 
   constructor() {
-    this.ProdutosPedidos = [];
+    this.ProdutosPedidos = new Array<ProdutoPedido>();
     this.Valor = 0;
   }
 }

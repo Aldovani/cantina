@@ -2,10 +2,15 @@ import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import Router from "next/router";
-import { SyntheticEvent } from "react";
+import { SyntheticEvent, useRef } from "react";
 import Styles from "../styles/pages/login.module.css";
+import LogoBig from "../assets/logo-big.svg";
+import LogoSmall from "../assets/logo-small.svg";
 
 export default function Login() {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
   const fazerLogin = async (e: SyntheticEvent) => {
     e.preventDefault();
     const resposta = await fetch(
@@ -16,19 +21,24 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          Login: "guilherme",
-          Senha: "123456",
+          Login: emailRef.current?.value,
+          Senha: passwordRef.current?.value,
         }),
       }
     );
 
-    if (resposta.ok) {
-      const dados = await resposta.json();
+    if (resposta.status === 200) {
+      let dados = await resposta.json();
+      Cookies.set("Token", dados.token);
 
-      Cookies.set("token", dados.token);
-      Cookies.set("cliente", JSON.stringify(dados.cliente));
+      if (dados.cliente === undefined) {
+        dados.cliente = { Nome: "SANDRA" };
+      }
+      Cookies.set("Cliente", JSON.stringify(dados.cliente));
+      localStorage.setItem("Cliente", JSON.stringify(dados.cliente));
 
-      Router.push("/");
+      if (dados.cliente.Nome == "SANDRA") Router.push("/staff/requests/");
+      else Router.push("/");
     } else {
       alert("Erro ao fazer login");
     }
@@ -37,22 +47,28 @@ export default function Login() {
   return (
     <main className={Styles.login}>
       <div className={Styles.left}>
-        <Image
-          src={"/src/assets/logo-small.svg"}
-          className={Styles.logoSmall}
-          alt="Logo small"
-        />
+        <Image src={LogoSmall} className={Styles.logoSmall} alt="Logo small" />
 
         <form className={Styles.form} onSubmit={fazerLogin}>
           <h1>Entrar</h1>
 
           <div className={Styles.containerInput}>
             <label htmlFor="email">Email</label>
-            <input type="text" id="email" placeholder="email@exemplo.com" />
+            <input
+              ref={emailRef}
+              type="text"
+              id="email"
+              placeholder="email@exemplo.com"
+            />
           </div>
           <div className={Styles.containerInput}>
             <label htmlFor="password">Senha</label>
-            <input type="password" id="password" placeholder="***********" />
+            <input
+              ref={passwordRef}
+              type="password"
+              id="password"
+              placeholder="***********"
+            />
           </div>
           <span className={Styles.link}>
             Esqueceu sua senha? <a>Clique aqui!</a>
@@ -65,7 +81,7 @@ export default function Login() {
         </form>
       </div>
       <div className={Styles.right}>
-        <Image src={"/src/assets/logo-big.svg"} alt="Logo big" />
+        <Image src={LogoBig} alt="Logo big" />
       </div>
     </main>
   );

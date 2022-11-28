@@ -3,6 +3,7 @@
 }
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 96px;
@@ -64,4 +65,94 @@
   line-height: 38px;
   text-transform: capitalize;
   color: #868e96;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.info p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: #000000;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+
+.status {
+  display: flex;
+  align-items: flex-end;
+}
+
+.status div {
+  margin-right: 8px;
+}
+
+.status button {
+  background: #fa5252;
+  border-radius: 8px;
+  padding: 8px;
+  border: 0;
+  cursor: pointer;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: #ffffff;
+  height: 60px;
+}
+
+.produtos table {
+  width: 100%;
+}
+
+.produtos th {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 100%;
+  color: #000000;
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #868e96;
+}
+
+.produtos td {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: #000000;
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #868e96;
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.popoverContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
 }

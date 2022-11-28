@@ -6,15 +6,28 @@ import { Badge } from "../../../components/Badge";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import { Pedido } from "../../../Entidades/Pedido";
+import { RequestCookies } from "next/dist/server/web/spec-extension/cookies";
+import { RequestContext } from "next/dist/server/base-server";
 
-export async function getServerSideProps() {
-  const token = Cookies.get("token");
+export async function getServerSideProps(context: RequestContext) {
+  const cookies = context.req.cookies;
+  const token = cookies.Token;
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const response = await fetch("https://sandrapi.azurewebsites.net/pedidos/", {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token as string}`,
     },
   });
+
   const requests = await response.json();
 
   return {
@@ -57,12 +70,6 @@ export default function Index({ requests }: { requests: Pedido[] }) {
           </div>
         )}
       </div>
-
-      {/* 
-      <div className={Styles.containerEmptyList}>
-        <Image src={EmptyList} alt="" />
-        <span>Nenhum pedido realizado</span>
-      </div> */}
     </div>
   );
 }
