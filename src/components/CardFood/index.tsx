@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import Image from "next/image";
 import { useListProduct } from "../../hooks/useListProduct";
 import { IProduct } from "../../types/Product";

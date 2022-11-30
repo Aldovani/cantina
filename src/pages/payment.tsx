@@ -3,8 +3,6 @@ import { ListProducts } from "../components/ListProducts";
 import Styles from "../styles/pages/payment.module.css";
 import Link from "next/link";
 
-import ArrowBack from "../../public/assets/arrow-back.svg";
-import CardInput from "../../public/assets/card-input.svg";
 import Image from "next/image";
 
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -97,7 +95,7 @@ export default function Payment() {
       <div>
         <div>
           <Link href="/" className={Styles.back}>
-            <Image src={ArrowBack} alt="" />
+            <Image src="/assets/arrow-back.svg" width={32} height={32} alt="" />
             Voltar
           </Link>
           <h3 className={Styles.title}>Método de pagamento</h3>
@@ -210,7 +208,13 @@ export default function Payment() {
               <h4>Numero do cartão</h4>
               <span>Digite os 14-16 numero do cartão</span>
               <div className={Styles.icon}>
-                <Image src={CardInput} className={Styles.iconInput} alt="" />
+                <Image
+                  src="/assets/card-input.svg"
+                  width={20}
+                  height={20}
+                  className={Styles.iconInput}
+                  alt=""
+                />
                 <input
                   type="number"
                   id="card"

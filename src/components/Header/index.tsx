@@ -1,7 +1,4 @@
 import Image from "next/image";
-import LogoSmall from "../../../public/assets/logo-small.svg";
-import IconBag from "../../../public/assets/icon-bag.svg";
-import IconProfile from "../../../public/assets/icon-profile.svg";
 import Styles from "./styles.module.css";
 import Link from "next/link";
 import { useAuth } from "../../hooks/useAuth";
@@ -24,10 +21,20 @@ export function Header() {
   return (
     <header className={Styles.header}>
       <div className={Styles.container}>
-        <Image src={LogoSmall} alt="Logo" />
+        <Image
+          src="/assets/logo-small.svg"
+          alt="Logo"
+          height={40}
+          width={170}
+        />
         <div>
           <div className={Styles.containerMenu}>
-            <Image src={IconProfile} alt="Logo" />
+            <Image
+              src="/assets/icon-profile.svg"
+              width={40}
+              height={40}
+              alt="Logo"
+            />
 
             <div className={Styles.menu}>
               {user?.name !== "SANDRA" ? (
@@ -54,7 +61,12 @@ export function Header() {
               data-qty={product.length}
               onClick={openBasket}
             >
-              <Image src={IconBag} alt="Logo" />
+              <Image
+                src="/assets/icon-bag.svg"
+                height={40}
+                width={40}
+                alt="Logo"
+              />
             </button>
           )}
         </div>

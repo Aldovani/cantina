@@ -1,9 +1,4 @@
 import Image from "next/image";
-import IconAll from "../../../public/assets/all.svg";
-import IconCandy from "../../../public/assets/candy.svg";
-import IconDrinks from "../../../public/assets/drinks.svg";
-import IconOthers from "../../../public/assets/others.svg";
-import IconSavory from "../../../public/assets/savory.svg";
 
 import Styles from "./styles.module.css";
 
@@ -21,7 +16,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "tudo" ? Styles.selected : ""
         }`}
       >
-        <Image src={IconAll} alt="" />
+        <Image src="/assets/all.svg" width={32} height={32} alt="" />
         Tudo
         <input
           type="radio"
@@ -40,7 +35,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "doces" ? Styles.selected : ""
         }`}
       >
-        <Image src={IconCandy} alt="" />
+        <Image src="/assets/candy.svg" width={32} height={32} alt="" />
         Doces
         <input
           type="radio"
@@ -59,7 +54,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "bebidas" ? Styles.selected : ""
         }`}
       >
-        <Image src={IconDrinks} alt="" />
+        <Image src="/assets/drinks.svg" height={32} width={32} alt="" />
         Bebidas
         <input
           type="radio"
@@ -78,7 +73,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "salgados" ? Styles.selected : ""
         }`}
       >
-        <Image src={IconSavory} alt="" />
+        <Image src="/assets/others.svg" width={32} height={32} alt="" />
         Salgados
         <input
           type="radio"
@@ -97,7 +92,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "outros" ? Styles.selected : ""
         }`}
       >
-        <Image src={IconOthers} alt="" />
+        <Image src="/assets/savory.svg" width={32} height={32} alt="" />
         Outros
         <input
           type="radio"

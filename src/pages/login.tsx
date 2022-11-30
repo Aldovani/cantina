@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import LogoBig from "../../public/assets/Logo-big.svg";
-import LogoSmall from "../../public/assets/logo-small.svg";
-
 import Styles from "../styles/pages/login.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -69,7 +66,13 @@ export default function Login() {
   return (
     <main className={Styles.login}>
       <div className={Styles.left}>
-        <Image src={LogoSmall} className={Styles.logoSmall} alt="Logo small" />
+        <Image
+          src="/assets/logo-small.svg"
+          width={170}
+          height={40}
+          className={Styles.logoSmall}
+          alt="Logo small"
+        />
 
         <form className={Styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h1>Entrar</h1>
@@ -101,7 +104,7 @@ export default function Login() {
           </span>
           <button
             type="submit"
-            disabled={isValid}
+            disabled={!isValid}
             className={`${!isValid ? Styles.isValid : ""} ${
               isSubmitting ? Styles.isLoading : ""
             }`}
@@ -114,7 +117,12 @@ export default function Login() {
         </form>
       </div>
       <div className={Styles.right}>
-        <Image src={LogoBig} alt="Logo big" />
+        <Image
+          src="/assets/Logo-big.svg"
+          width={525}
+          height={550}
+          alt="Logo big"
+        />
       </div>
     </main>
   );

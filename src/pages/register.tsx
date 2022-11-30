@@ -62,7 +62,13 @@ export default function Register() {
   return (
     <main className={Styles.register}>
       <div className={Styles.left}>
-        <Image src={LogoSmall} className={Styles.logoSmall} alt="Logo small" />
+      <Image
+          src="/assets/logo-small.svg"
+          width={170}
+          height={40}
+          className={Styles.logoSmall}
+          alt="Logo small"
+        />
 
         <form className={Styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h1>Cadastro</h1>
@@ -128,7 +134,12 @@ export default function Register() {
         </form>
       </div>
       <div className={Styles.right}>
-        <Image src={LogoBig} alt="Logo big" />
+      <Image
+          src="/assets/Logo-big.svg"
+          width={525}
+          height={550}
+          alt="Logo big"
+        />
       </div>
     </main>
   );

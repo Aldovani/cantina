@@ -2,7 +2,6 @@ import { Header } from "../../../components/Header";
 import { Request } from "../../../components/Request";
 
 import Styles from "../../../styles/pages/staff/request.module.css";
-import EmptyList from "../../../../public/assets/empty-list.svg";
 import Image from "next/image";
 import { RequestContext } from "next/dist/server/base-server";
 import { api } from "../../../services/api";
@@ -65,7 +64,12 @@ export default function Requests({ requests }: IRequests) {
             })
           ) : (
             <div className={Styles.containerEmptyList}>
-              <Image src={EmptyList} alt="" />
+              <Image
+                src="/assets/empty-list.svg"
+                width={330}
+                height={330}
+                alt=""
+              />
               <span>aguardando Pedido</span>
             </div>
           )}
