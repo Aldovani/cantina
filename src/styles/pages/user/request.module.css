@@ -40,6 +40,7 @@
 .requestItem {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 50px 75px;
   border-radius: 8px;
   background: #f1f3f5;

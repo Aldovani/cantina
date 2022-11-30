@@ -135,7 +135,7 @@ export default function Register() {
       </div>
       <div className={Styles.right}>
       <Image
-          src="/assets/Logo-big.svg"
+          src="/assets/logo-big.svg"
           width={525}
           height={550}
           alt="Logo big"
