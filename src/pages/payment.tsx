@@ -6,7 +6,90 @@ import ArrowBack from "../assets/arrow-back.svg";
 import CardInput from "../assets/card-input.svg";
 import Image from "next/image";
 
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useListProduct } from "../hooks/useListProduct";
+import { useAuth } from "../hooks/useAuth";
+import { api } from "../services/api";
+import Router from "next/router";
+
+const schema = yup
+  .object({
+    name: yup.string().required("Campo obrigatório"),
+    numberCard: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(/^.{14,16}$/g, "Tamanho invalido"),
+    validationMoth: yup
+      .number()
+      .min(1, "Mes invalido")
+      .max(12, "Mes invalido")
+      .required("Campo obrigatório"),
+    validationYear: yup
+      .number()
+      .required("Campo obrigatório")
+      .min(2022, "Ano invalido")
+      .max(9999, "Ano invalido"),
+    validationCode: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(/^.{3,4}$/g, "Tamanho invalido"),
+  })
+  .required();
+
+type IFormData = {
+  name: string;
+  numberCard: string;
+  validationMoth: number;
+  validationYear: number;
+  validationCode: string;
+};
 export default function Payment() {
+  const { product, priceTotal, clear } = useListProduct();
+  const { token } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<IFormData>({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    shouldFocusError: true,
+  });
+
+  const onSubmit: SubmitHandler<IFormData> = async (data) => {
+    try {
+      const newProducts = product.map((e) => {
+        return {
+          ProdId: e.Id,
+          PedId: 0,
+          Quantidade: e.Quantidade,
+        };
+      });
+
+      const { data, status } = await api.post(
+        "/pedidos/adicionar",
+
+        {
+          Valor: priceTotal,
+          MetPag: "cartão",
+          ProdutosPedidos: newProducts,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token as string}`,
+          },
+        }
+      );
+      if (status === 200) {
+        Router.push(`/user/requests/${data.Id}`);
+        clear();
+      }
+    } catch (err) {}
+  };
+
   return (
     <div className={Styles.payment}>
       <Header />
@@ -45,7 +128,10 @@ export default function Payment() {
               Cartão
               <input type="radio" name="payment" id="card" />
             </label>
-            <label htmlFor="pix" className={`${Styles.radio} `}>
+            <label
+              htmlFor="pix"
+              className={`${Styles.radio} ${Styles.disabled}`}
+            >
               <svg
                 width={32}
                 height={32}
@@ -66,9 +152,12 @@ export default function Payment() {
                 </defs>
               </svg>
               Pix
-              <input type="radio" name="payment" id="pix" />
+              <input disabled type="radio" name="payment" id="pix" />
             </label>
-            <label htmlFor="ticket" className={`${Styles.radio} `}>
+            <label
+              htmlFor="ticket"
+              className={`${Styles.radio} ${Styles.disabled}`}
+            >
               <svg
                 width={32}
                 height={32}
@@ -97,26 +186,42 @@ export default function Payment() {
                 />
               </svg>
               Boleto
-              <input type="radio" name="payment" id="ticket" />
+              <input disabled type="radio" name="payment" id="ticket" />
             </label>
           </div>
 
-          <form className={Styles.form}>
+          <form className={Styles.form} onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="name">
               <h4>Nome do titular</h4>
               <span>Digite o nome do titular do cartão</span>
-              <input type="text" id="name" placeholder="Felipe duarte" />
+              <input
+                type="text"
+                id="name"
+                placeholder="Felipe duarte"
+                {...register("name")}
+                className={errors.name ? Styles.invalid : ""}
+              />
+              {errors.name && (
+                <span className={Styles.erros}>{errors.name.message}</span>
+              )}
             </label>
             <label htmlFor="card">
               <h4>Numero do cartão</h4>
               <span>Digite os 14-16 numero do cartão</span>
               <div className={Styles.icon}>
-                <Image src={CardInput}  className={Styles.iconInput} alt="" />
+                <Image src={CardInput} className={Styles.iconInput} alt="" />
                 <input
                   type="number"
                   id="card"
                   placeholder="0000 - 0000 - 0000 - 0000"
+                  {...register("numberCard")}
+                  className={errors.numberCard ? Styles.invalid : ""}
                 />
+                {errors.numberCard && (
+                  <span className={Styles.erros}>
+                    {errors.numberCard.message}
+                  </span>
+                )}
               </div>
             </label>
             <label htmlFor="validation">
@@ -126,16 +231,34 @@ export default function Payment() {
                 <input
                   id="validation"
                   type="number"
-                  className={Styles.center}
+                  className={`${Styles.center} ${
+                    errors.validationMoth ? Styles.invalid : ""
+                  }`}
                   placeholder="12"
+                  {...register("validationMoth")}
                 />
                 <span className={Styles.divider}>/</span>
                 <input
                   type="number"
-                  className={Styles.center}
+                  className={`${Styles.center} ${
+                    errors.validationYear ? Styles.invalid : ""
+                  }`}
                   placeholder="2022"
+                  {...register("validationYear")}
                 />
               </div>
+
+              {(errors.validationMoth || errors.validationYear) && (
+                <span className={Styles.erros}>
+                  {errors.validationMoth?.type == "typeError"
+                    ? "Campo Mes invalido"
+                    : errors.validationMoth?.message}
+                  <br />
+                  {errors.validationYear?.type == "typeError"
+                    ? "Campo Ano invalido"
+                    : errors.validationYear?.message}
+                </span>
+              )}
             </label>
 
             <label htmlFor="security">
@@ -144,13 +267,30 @@ export default function Payment() {
               <input
                 type="number"
                 placeholder="123"
-                className={Styles.center}
-                maxLength={4}
+                className={`${Styles.center} ${
+                  errors.validationCode ? Styles.invalid : ""
+                }`}
                 id="security"
+                {...register("validationCode")}
               />
+              {errors.validationCode && (
+                <span className={Styles.erros}>
+                  {errors.validationCode.message}
+                </span>
+              )}
             </label>
 
-            <button>Pagar</button>
+            <button
+              type="submit"
+              disabled={product.length === 0}
+              className={`${
+                product.length >= 1 && isValid ? "" : Styles.isValid
+              }
+            ${isSubmitting ? Styles.isLoading : ""}
+            `}
+            >
+              {!isSubmitting ? "Pagar" : ""}
+            </button>
           </form>
         </div>
 

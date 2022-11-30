@@ -1,0 +1,110 @@
+.cardStatus {
+  background: #f1f3f5;
+  box-shadow: 0px 218.363px 131.373px rgba(32, 39, 46, 0.02),
+    0px 97.642px 97.642px rgba(32, 39, 46, 0.03),
+    0px 24.8543px 53.2593px rgba(32, 39, 46, 0.03),
+    0px 0px 0px rgba(32, 39, 46, 0.03);
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  max-width: 560px;
+  width: 560px;
+  padding: 64px 0 80px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10%;
+}
+
+.cardStatus h2 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  /* identical to box height */
+
+  /* Gray/Gray 9 */
+
+  color: #212529;
+  margin-bottom: 48px;
+}
+
+.cardStatus div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.cardStatus span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  /* identical to box height */
+
+  text-transform: uppercase;
+}
+
+.success {
+  color: #37b24d;
+}
+.cancel{
+ color:#F03E3E;
+}
+
+.waiting{
+  color: #F59F00;
+}
+
+.cardStatus h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  color: #495057;
+}
+
+.cardStatus h4 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  margin-top: 40px;
+  color: #212529;
+}
+
+
+@media (max-width: 1200px) {
+  .cardStatus {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    transform: translate(0);
+    padding: 80px;
+    gap: 16px;
+  }
+
+  .cardStatus h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+  .cardStatus div {
+    margin-top: 16px;
+  }
+  .cardStatus h3 {
+    margin-top: 0;
+  }
+  .cardStatus h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,43 @@
+.requestDetails {
+  padding: 220px 10% 220px;
+}
+.requestDetails h2 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 42px;
+  color: #495057;
+  margin: 48px 0 32px;
+}
+/* .container {
+  position: relative;
+} */
+
+.containerItems {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  /* Gray/Gray 6 */
+
+  color: #868e96;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    display: flex;
+  }
+}

@@ -1,7 +1,6 @@
 .payment {
   padding: 120px 0 200px 10%;
   width: 100%;
-  
 }
 .back {
   display: flex;
@@ -67,8 +66,13 @@
   pointer-events: none;
 }
 
+.radio.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .form {
-  border-top: 1px solid #868E96;
+  border-top: 1px solid #868e96;
   padding-top: 64px;
   width: max-content;
   display: grid;
@@ -98,6 +102,11 @@
   line-height: 100%;
   color: #adb5bd;
 }
+.form span.erros {
+  color: #fa5252;
+  margin-top: 8px;
+  display: block;
+}
 
 .form .divider {
   font-family: "Roboto";
@@ -108,10 +117,10 @@
 
   color: #000000;
 }
-.icon{
+.icon {
   position: relative;
 }
-.iconInput{
+.iconInput {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -132,6 +141,9 @@
   margin-top: 12px;
 
   background: transparent;
+}
+.form input.invalid {
+  border: 1px solid #fa5252;
 }
 .form input.center {
   text-align: center;
@@ -154,6 +166,32 @@
   /* Red/Red 0 */
 
   color: #fff5f5;
+
+  transition: filter 0.2s ease;
+}
+
+.form button:hover {
+  filter: brightness(0.7);
+}
+
+.form button.isValid {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.form button.isLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form button.isLoading::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 4px solid #fff5f5;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: loading 2s linear infinite;
 }
 
 .dateValidation {
@@ -161,4 +199,13 @@
   align-items: center;
   justify-content: center;
   gap: 13px;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

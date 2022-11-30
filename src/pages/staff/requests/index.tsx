@@ -1,10 +1,24 @@
 import { Header } from "../../../components/Header";
-import { RequestItem } from "../../../components/RequestItem";
+import { Request } from "../../../components/Request";
+
 import Styles from "../../../styles/pages/staff/request.module.css";
 import EmptyList from "../../../assets/empty-list.svg";
 import Image from "next/image";
+import { RequestContext } from "next/dist/server/base-server";
+import { api } from "../../../services/api";
+import { IRequest } from "../../../types/Request";
 
-export default function Requests() {
+interface IRequests {
+  requests: IRequest[];
+}
+
+export default function Requests({ requests }: IRequests) {
+  const filteredRequests = requests.filter((e) => {
+    if (e.Status === "Aguardando") {
+      return e;
+    }
+  });
+
   return (
     <div className={Styles.container}>
       <Header />
@@ -37,19 +51,50 @@ export default function Requests() {
           </div>
         </div>
 
-        {/* <div className={Styles.containerRequestItems}>
-          <RequestItem />
-          <RequestItem />
-          <RequestItem />
-          <RequestItem />
-          <RequestItem />
-        </div> */}
-
-        <div className={Styles.containerEmptyList}>
-          <Image src={EmptyList} alt="" />
-          <span>aguardando Pedido</span>
+        <div className={Styles.containerRequestItems}>
+          {filteredRequests.length > 0 ? (
+            filteredRequests.map((e) => {
+              return (
+                <Request
+                  name={e.Clientes.Nome}
+                  id={e.Id}
+                  price={e.Valor}
+                  key={e.Id}
+                />
+              );
+            })
+          ) : (
+            <div className={Styles.containerEmptyList}>
+              <Image src={EmptyList} alt="" />
+              <span>aguardando Pedido</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context: RequestContext) {
+  const cookies = context.req.cookies;
+  const token = cookies.Token;
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  const { data } = await api.get("/pedidos/", {
+    headers: {
+      Authorization: `Bearer ${token as string}`,
+    },
+  });
+
+  return {
+    props: {
+      requests: data,
+    },
+  };
 }

@@ -1,17 +1,34 @@
+import { url } from "inspector";
 import Image from "next/image";
-import xRatao from "../../assets/x-rato.png";
+import { useListProduct } from "../../hooks/useListProduct";
+import { Product } from "../../types/Product";
 import Styles from "./styles.module.css";
 
-export function CardFood() {
+interface ICardFood {
+  product: Product;
+}
+
+export function CardFood({ product }: ICardFood) {
+  const { setItem } = useListProduct();
+
+  function ClickCard() {
+    setItem({ ...product, Quantidade: 1 });
+  }
   return (
-    <div className={Styles.cardFood}>
-      <Image src={xRatao} alt="" />
+    <div className={Styles.cardFood} onClick={ClickCard}>
+      <Image
+        src={product.URLImagem ? product.URLImagem : ""}
+        width={180}
+        height={140}
+        alt={product.Nome}
+      />
       <div>
-        <h2 className={Styles.name}>X-ratão</h2>
-        <p className={Styles.description}>
-          PÃO, 2 CARNE, 2 QUEIJO, 2 PRESUNTO, 2 OVOS, BACON, ALFACE
-        </p>
-        <h3 className={Styles.price}>R$ 10.00</h3>
+        <h2 className={Styles.name}>{product.Nome}</h2>
+        <p className={Styles.description}>{product.Descricao}</p>
+        <h3 className={Styles.price}>
+          R${" "}
+          {product.Preco.toLocaleString("pt-br", { minimumFractionDigits: 2 })}
+        </h3>
       </div>
     </div>
   );

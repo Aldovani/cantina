@@ -1,0 +1,52 @@
+[
+
+  {
+    "id":"6382b4bcc41ab",
+    "name":"X-Ratão",
+    "price":20.00,
+    "description":"PÃO, 2 CARNE, 2 QUEIJO, 2 PRESUNTO, 2 OVOS, BACON, ALFACE",
+    "category":"salgados",
+    "urlImage":"https://uploaddeimagens.com.br/images/004/180/471/original/Foto-X-Burguer-Hamburguer-Cheeseburguer-PNG-1024x853.png?1669496970"
+  },
+  
+  {
+    "id":"6382b4c927e03",
+    "name":"X-Salada",
+    "price":15.00,
+    "description":"PÃO,2 QUEIJO, ALFACE, TOMATE",
+    "category":"salgados",
+    "urlImage":"https://uploaddeimagens.com.br/images/004/180/471/original/Foto-X-Burguer-Hamburguer-Cheeseburguer-PNG-1024x853.png?1669496970"
+  },
+  {
+    "id":"37ec016a",
+    "name":"Coxinha",
+    "price":10.00,
+    "description":"frango com catupiry",
+    "category":"salgados",
+    "urlImage":"https://uploaddeimagens.com.br/images/004/181/110/original/coxinha.png?1669582188"
+  },
+  {
+    "id":"32941482",
+    "name":"Sorvete",
+    "price":15.00,
+    "description":"PÃO,2 QUEIJO, ALFACE, TOMATE",
+    "category":"doces",
+    "urlImage":"https://uploaddeimagens.com.br/images/004/181/112/original/DeliGeli-Sorvetes-Produto-cascao-de-sorvete.png?1669582345"
+  },
+  {
+    "id":"e05a0752",
+    "name":"Coca-Cola",
+    "price":30.00,
+    "description":"300 ml",
+    "category":"bebidas",
+    "urlImage":"https://uploaddeimagens.com.br/images/004/181/113/full/1616032856_234.jpg?1669582492"
+  },
+  {
+    "id":"35e3d658",
+    "name":"Halls-Preto",
+    "price":100.00,
+    "description":"Azedinho",
+    "category":"outros",
+    "urlImage":"https://uploaddeimagens.com.br/images/004/181/115/full/Halls-PMP.png?1669582623"
+  }
+]

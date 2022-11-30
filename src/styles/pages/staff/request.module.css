@@ -1,5 +1,5 @@
 .container {
-  padding: 220px 10% 0;
+  padding: 220px 10% 200px;
 }
 .header {
   display: flex;
@@ -24,8 +24,8 @@
   line-height: 100%;
   padding: 16px;
 
-  max-width: 608px;
-  width: 608px;
+  width: 100%;
+
   border: 1px solid #868e96;
   border-radius: 8px;
 
@@ -34,6 +34,9 @@
 .header > div {
   display: flex;
   gap: 16px;
+  max-width: 608px;
+  width: 100%;
+  align-items: flex-end;
 }
 .header button {
   background: #fa5252;
@@ -64,4 +67,15 @@
   line-height: 38px;
   text-transform: capitalize;
   color: #868e96;
+}
+
+@media (max-width: 1200px) {
+  .header {
+    align-items: flex-start;
+    gap: 32px;
+    flex-direction: column;
+  }
+  .header > div {
+    width: 100%;
+  }
 }

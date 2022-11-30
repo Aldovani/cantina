@@ -1,11 +1,33 @@
+import Image from "next/image";
 import Styles from "./styles.module.css";
-import Link from 'next/link'
-export function RequestItem() {
+import xRatao from "../../assets/x-rato.png";
+
+interface IRequestItem {
+  data: {
+    name: string;
+
+    price: number;
+    quantity: number;
+    urlImage: string;
+  };
+}
+
+export function RequestItem({ data }: IRequestItem) {
   return (
-    <Link  href="/staff/requests/1" className={Styles.requestItem}>
-      <h2>#999999999 </h2>
-      <h3>R$ 150.00</h3>
-      <span>Aldovani Henrique da costa</span>
-    </Link>
+    <div className={Styles.requestItem}>
+      <Image src={data.urlImage} width={120} height={90} alt={data.name} />
+
+      <h2>{data.name}</h2>
+
+      <div>
+        <h3>{data.quantity}X</h3>
+        <span>
+          R${" "}
+          {(data.price * data.quantity).toLocaleString("pt-br", {
+            minimumFractionDigits: 2,
+          })}
+        </span>
+      </div>
+    </div>
   );
 }

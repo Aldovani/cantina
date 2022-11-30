@@ -7,37 +7,107 @@ import IconSavory from "../../assets/savory.svg";
 
 import Styles from "./styles.module.css";
 
-export function FilterBar() {
+interface IFilterBar {
+  current: string;
+  changeCurrent: (current: string) => void;
+}
+
+export function FilterBar({ current, changeCurrent }: IFilterBar) {
   return (
     <div className={Styles.container}>
-      <label htmlFor="all" className={`${Styles.input} ${Styles.selected}`}>
+      <label
+        htmlFor="all"
+        className={`${Styles.input} ${
+          current === "tudo" ? Styles.selected : ""
+        }`}
+      >
         <Image src={IconAll} alt="" />
         Tudo
-        <input type="radio" name="foods"  id="all" />
+        <input
+          type="radio"
+          name="foods"
+          value="tudo"
+          id="all"
+          onChange={(e) => {
+            changeCurrent(e.target.value);
+          }}
+        />
       </label>
 
-      <label htmlFor="candy" className={Styles.input}>
+      <label
+        htmlFor="candy"
+        className={`${Styles.input} ${
+          current === "doces" ? Styles.selected : ""
+        }`}
+      >
         <Image src={IconCandy} alt="" />
         Doces
-        <input type="radio" name="foods" id="candy" />
+        <input
+          type="radio"
+          name="foods"
+          id="candy"
+          value="doces"
+          onChange={(e) => {
+            changeCurrent(e.target.value);
+          }}
+        />
       </label>
 
-      <label htmlFor="drinks" className={Styles.input}>
+      <label
+        htmlFor="drinks"
+        className={`${Styles.input} ${
+          current === "bebidas" ? Styles.selected : ""
+        }`}
+      >
         <Image src={IconDrinks} alt="" />
         Bebidas
-        <input type="radio" name="foods" id="drinks" />
+        <input
+          type="radio"
+          name="foods"
+          id="drinks"
+          value="bebidas"
+          onChange={(e) => {
+            changeCurrent(e.target.value);
+          }}
+        />
       </label>
 
-      <label htmlFor="savory" className={Styles.input}>
+      <label
+        htmlFor="savory"
+        className={`${Styles.input} ${
+          current === "salgados" ? Styles.selected : ""
+        }`}
+      >
         <Image src={IconSavory} alt="" />
         Salgados
-        <input type="radio" name="foods" id="savory" />
+        <input
+          type="radio"
+          name="foods"
+          id="savory"
+          value="salgados"
+          onChange={(e) => {
+            changeCurrent(e.target.value);
+          }}
+        />
       </label>
 
-      <label htmlFor="others" className={Styles.input}>
+      <label
+        htmlFor="others"
+        className={`${Styles.input} ${
+          current === "outros" ? Styles.selected : ""
+        }`}
+      >
         <Image src={IconOthers} alt="" />
         Outros
-        <input type="radio" name="foods" id="others" />
+        <input
+          type="radio"
+          name="foods"
+          id="others"
+          value="outros"
+          onChange={(e) => {
+            changeCurrent(e.target.value);
+          }}
+        />
       </label>
     </div>
   );
