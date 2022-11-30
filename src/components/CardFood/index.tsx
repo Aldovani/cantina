@@ -1,11 +1,11 @@
 import { url } from "inspector";
 import Image from "next/image";
 import { useListProduct } from "../../hooks/useListProduct";
-import { Product } from "../../types/Product";
+import { IProduct } from "../../types/Product";
 import Styles from "./styles.module.css";
 
 interface ICardFood {
-  product: Product;
+  product: IProduct;
 }
 
 export function CardFood({ product }: ICardFood) {

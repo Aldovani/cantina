@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Styles from "./styles.module.css";
-import xRatao from "../../assets/x-rato.png";
 
 interface IRequestItem {
   data: {

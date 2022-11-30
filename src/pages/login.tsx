@@ -58,6 +58,8 @@ export default function Login() {
 
         if (data.cliente.Nome == "SANDRA") Router.push("/staff/requests/");
         else Router.push("/");
+      } else {
+        alert("Email ou senha invalido");
       }
     } catch (err) {}
   };
