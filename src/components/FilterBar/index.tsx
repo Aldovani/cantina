@@ -1,9 +1,9 @@
 import Image from "next/image";
-import IconAll from "../../assets/all.svg";
-import IconCandy from "../../assets/candy.svg";
-import IconDrinks from "../../assets/drinks.svg";
-import IconOthers from "../../assets/others.svg";
-import IconSavory from "../../assets/savory.svg";
+import IconAll from "../../../public/assets/all.svg";
+import IconCandy from "../../../public/assets/candy.svg";
+import IconDrinks from "../../../public/assets/drinks.svg";
+import IconOthers from "../../../public/assets/others.svg";
+import IconSavory from "../../../public/assets/savory.svg";
 
 import Styles from "./styles.module.css";
 

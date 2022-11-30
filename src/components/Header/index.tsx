@@ -1,7 +1,7 @@
 import Image from "next/image";
-import LogoSmall from "../../assets/logo-small.svg";
-import IconBag from "../../assets/icon-bag.svg";
-import IconProfile from "../../assets/icon-profile.svg";
+import LogoSmall from "../../../public/assets/logo-small.svg";
+import IconBag from "../../../public/assets/icon-bag.svg";
+import IconProfile from "../../../public/assets/icon-profile.svg";
 import Styles from "./styles.module.css";
 import Link from "next/link";
 import { useAuth } from "../../hooks/useAuth";

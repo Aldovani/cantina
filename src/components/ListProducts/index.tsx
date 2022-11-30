@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ItemProduct } from "../ItemProduct";
-import EmptyList from "../../assets/empty-list.svg";
+import EmptyList from "../../../public/assets/empty-list.svg";
 import Styles from "./styles.module.css";
 import Link from "next/link";
 import { useListProduct } from "../../hooks/useListProduct";

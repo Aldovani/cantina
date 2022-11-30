@@ -2,7 +2,7 @@ import { Header } from "../../../components/Header";
 import { Request } from "../../../components/Request";
 
 import Styles from "../../../styles/pages/staff/request.module.css";
-import EmptyList from "../../../assets/empty-list.svg";
+import EmptyList from "../../../../public/assets/empty-list.svg";
 import Image from "next/image";
 import { RequestContext } from "next/dist/server/base-server";
 import { api } from "../../../services/api";

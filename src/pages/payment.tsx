@@ -2,8 +2,9 @@ import { Header } from "../components/Header/";
 import { ListProducts } from "../components/ListProducts";
 import Styles from "../styles/pages/payment.module.css";
 import Link from "next/link";
-import ArrowBack from "../assets/arrow-back.svg";
-import CardInput from "../assets/card-input.svg";
+
+import ArrowBack from "../../public/assets/arrow-back.svg";
+import CardInput from "../../public/assets/card-input.svg";
 import Image from "next/image";
 
 import { SubmitHandler, useForm } from "react-hook-form";

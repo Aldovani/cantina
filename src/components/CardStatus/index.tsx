@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Success from "../../assets/success-request.svg";
-import waiting from "../../assets/waiting-request.svg";
-import Cancel from "../../assets/cancel-request.svg";
+import Success from "../../../public/assets/success-request.svg";
+import waiting from "../../../public/assets/waiting-request.svg";
+import Cancel from "../../../public/assets/cancel-request.svg";
 import Styles from "./styles.module.css";
 
 interface ICardStatus {

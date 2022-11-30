@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogoBig from "../assets/Logo-big.svg";
-import LogoSmall from "../assets/logo-small.svg";
+
+import LogoBig from "../../public/assets/Logo-big.svg";
+import LogoSmall from "../../public/assets/logo-small.svg";
+
 import Styles from "../styles/pages/login.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -99,7 +101,10 @@ export default function Login() {
           </span>
           <button
             type="submit"
-            className={isSubmitting ? Styles.isLoading : ""}
+            disabled={isValid}
+            className={`${!isValid ? Styles.isValid : ""} ${
+              isSubmitting ? Styles.isLoading : ""
+            }`}
           >
             {!isSubmitting ? "Entrar" : ""}
           </button>

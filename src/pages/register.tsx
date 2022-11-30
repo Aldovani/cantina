@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogoBig from "../assets/Logo-big.svg";
-import LogoSmall from "../assets/logo-small.svg";
+
+import LogoBig from "../../public/assets/Logo-big.svg";
+import LogoSmall from "../../public/assets/logo-small.svg";
+
 import Styles from "../styles/pages/register.module.css";
 import * as yup from "yup";
 import Router from "next/router";
 import { api } from "../services/api";
-import Cookies from "js-cookie";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
