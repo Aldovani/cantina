@@ -209,3 +209,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+@media (max-width:1200px){
+  .payment {
+    padding: 120px 10% 200px 10%;
+    width: 100%;
+  }
+ .form{
+  width: 100%;
+  grid-template-areas:
+    "n"
+    "c"
+    "v"
+    "s"
+    "b";
+    grid-template-columns: repeat(1, 1fr);
+ }
+
+}

@@ -14,7 +14,8 @@ export function ListProducts({ buttonVisible = true }: ListProducts) {
   return (
     <div
       className={`${Styles.listProducts}
-    ${isOpen ? Styles.open : ""}
+    ${isOpen
+       ? Styles.open : ""}
     `}
     >
       {product.length > 0 ? (

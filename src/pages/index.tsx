@@ -8,14 +8,16 @@ import { useState } from "react";
 import { IProduct } from "../types/Product";
 import { api } from "../services/api";
 import { RequestContext } from "next/dist/server/base-server";
+import { useListProduct } from "../hooks/useListProduct";
 
 interface IHome {
   products: IProduct[];
 }
 
 export default function Home({ products }: IHome) {
+  const { isOpen } = useListProduct();
   const [filterBar, setFilterBar] = useState("tudo");
-  const [product, setProduct] = useState<IProduct[]>(products || []);
+  const product = products || [];
 
   function changeCurrent(value: string) {
     setFilterBar(value);
@@ -24,7 +26,7 @@ export default function Home({ products }: IHome) {
   return (
     <div className={Styles.home}>
       <Header />
-      <div className={Styles.container}>
+      <div className={`${Styles.container} ${isOpen ? Styles.open : ""}`}>
         <div>
           <FilterBar current={filterBar} changeCurrent={changeCurrent} />
           <div className={Styles.cardContainer}>

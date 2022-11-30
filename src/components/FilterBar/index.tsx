@@ -73,7 +73,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "salgados" ? Styles.selected : ""
         }`}
       >
-        <Image src="/assets/others.svg" width={32} height={32} alt="" />
+        <Image src="/assets/savory.svg" width={32} height={32} alt="" />
         Salgados
         <input
           type="radio"
@@ -92,7 +92,7 @@ export function FilterBar({ current, changeCurrent }: IFilterBar) {
           current === "outros" ? Styles.selected : ""
         }`}
       >
-        <Image src="/assets/savory.svg" width={32} height={32} alt="" />
+        <Image src="/assets/others.svg" width={32} height={32} alt="" />
         Outros
         <input
           type="radio"

@@ -22,17 +22,32 @@ export function CardStatus({ status, id, price }: ICardStatus) {
       <div>
         {status == "success" ? (
           <>
-            <Image src="/assets/success-request.svg" alt="" />
+            <Image
+              src="/assets/success-request.svg"
+              width={128}
+              height={128}
+              alt=""
+            />
             <span className={Styles.success}>sucesso</span>
           </>
         ) : status === "cancel" ? (
           <>
-            <Image src="/assets/cancel-request.svg" alt="" />
+            <Image
+              src="/assets/cancel-request.svg"
+              width={128}
+              height={128}
+              alt=""
+            />
             <span className={Styles.cancel}>Cancelado</span>
           </>
         ) : (
           <>
-            <Image src="/assets/waiting-request.svg" alt="" />
+            <Image
+              src="/assets/waiting-request.svg"
+              width={128}
+              height={128}
+              alt=""
+            />
             <span className={Styles.waiting}>Aguardando</span>
           </>
         )}

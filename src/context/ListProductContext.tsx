@@ -21,7 +21,8 @@ export const ListProductContext = createContext({} as IListProductContext);
 export function ListProductProvider({ children }: IListProductProvider) {
   const [items, setItems] = useState<IProduct[]>([]);
   const [price, setPrice] = useState(0);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  
 
   useEffect(() => {
     const newPrice = items?.reduce((accumulator, currentValue) => {

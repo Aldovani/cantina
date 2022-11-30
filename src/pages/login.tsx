@@ -9,6 +9,7 @@ import Router from "next/router";
 import { api } from "../services/api";
 import Cookies from "js-cookie";
 import { useAuth } from "../hooks/useAuth";
+import { useState } from "react";
 
 const schema = yup
   .object({
@@ -24,10 +25,12 @@ type IFormData = {
 
 export default function Login() {
   const { setToken, setUser } = useAuth();
+  const [erro, setError] = useState(false);
 
   const {
     register,
     handleSubmit,
+
     formState: { errors, isSubmitting, isValid },
   } = useForm<IFormData>({
     resolver: yupResolver(schema),
@@ -57,10 +60,13 @@ export default function Login() {
 
         if (data.cliente.Nome == "SANDRA") Router.push("/staff/requests/");
         else Router.push("/");
-      } else {
-        alert("Email ou senha invalido");
+        setError(false);
+
+        return;
       }
-    } catch (err) {}
+    } catch (err) {
+      setError(true);
+    }
   };
 
   return (
@@ -99,6 +105,11 @@ export default function Login() {
             />
             <span className={Styles.erros}>{errors.password?.message}</span>
           </div>
+
+          {erro && (
+            <span className={Styles.erros}>Email ou senha invalido </span>
+          )}
+
           <span className={Styles.link}>
             Esqueceu sua senha? <a>Click aqui!</a>
           </span>

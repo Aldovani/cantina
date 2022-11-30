@@ -4,15 +4,19 @@ import Link from "next/link";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
 import { useListProduct } from "../../hooks/useListProduct";
+import { useWindowSize } from "../../hooks/useSize";
 
 export function Header() {
   const { logout, user } = useAuth();
   const { asPath, push } = useRouter();
   const { setIsOpen, isOpen, product } = useListProduct();
+  const size = useWindowSize();
 
   function openBasket() {
     if (asPath === "/" || asPath === "/payment") {
-      setIsOpen(!isOpen);
+      if (size.width < 1550) {
+        setIsOpen(!isOpen);
+      }
       return;
     }
     push("/");

@@ -2,7 +2,6 @@
   background: #f1f3f5;
 
   border-radius: 8px;
-  max-width: 315px;
   padding: 32px;
   display: flex;
   align-items: center;
@@ -24,9 +23,6 @@
   font-size: 24px;
   line-height: 28px;
   margin-top: 40px;
-
-  /* Gray/Gray 7 */
-
   color: #495057;
 }
 .description {
@@ -48,4 +44,15 @@
   line-height: 28px;
   color: #212529;
   margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .cardFood {
+    flex-direction: row;
+  }
+  .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
